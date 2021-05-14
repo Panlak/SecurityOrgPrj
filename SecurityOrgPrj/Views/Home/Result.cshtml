@@ -1,0 +1,26 @@
+﻿@using  SecurityOrgPrj.Data.ViewModel
+@model IndexViewModel
+
+@{
+	Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>List</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width">
+</head>
+<body>
+	@{
+		foreach (var country in Model.Countries)
+		{
+			<h2>@country.CountryName</h2>
+		}
+		foreach (var item in Model.City)
+		{
+			<h2>@item.CityName</h2>
+		}
+	}
+</body>
+</html>

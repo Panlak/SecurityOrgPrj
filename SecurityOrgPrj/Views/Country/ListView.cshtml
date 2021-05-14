@@ -1,0 +1,22 @@
+﻿@using SecurityOrgPrj.Models;
+@model IEnumerable<Countries>
+
+@{ 
+	Layout = null;
+}
+<!DOCTYPE html>
+<html >
+<head>
+	<title>List</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width">
+</head>
+<body>
+	@{ 
+		foreach(var country in Model)
+		{
+		<h2>@country.CountryName</h2>
+		}
+	}
+</body>
+</html>
