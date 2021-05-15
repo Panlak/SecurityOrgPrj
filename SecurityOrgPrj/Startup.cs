@@ -47,7 +47,7 @@ namespace SecurityOrgPrj
 				app.UseDeveloperExceptionPage();
 			}
 			app.UseRouting();
-
+			app.UseStaticFiles();
 			app.UseEndpoints(endpoints =>
 			{
 				endpoints.MapControllerRoute(

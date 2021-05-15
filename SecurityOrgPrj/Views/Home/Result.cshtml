@@ -1,4 +1,5 @@
 ﻿@using  SecurityOrgPrj.Data.ViewModel
+@using 
 @model IndexViewModel
 
 @{
@@ -10,17 +11,29 @@
 	<title>List</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width">
+
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="~/css/bootstrap.min.css" rel="stylesheet" />
+
+	<link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet" />
+
+	<link href="~/css/StyleSheet.css" rel="stylesheet" />
+	@Styles.Render("~/css/StyleSheet.css")
 </head>
 <body>
-	@{
-		foreach (var country in Model.Countries)
-		{
-			<h2>@country.CountryName</h2>
-		}
-		foreach (var item in Model.City)
-		{
-			<h2>@item.CityName</h2>
-		}
-	}
+	
+		<div class="bg-success">
+			@{
+				foreach (var country in Model.Countries)
+				{
+					<h2>@country.CountryName</h2>
+				}
+				foreach (var item in Model.City)
+				{
+					<h2>@item.CityName</h2>
+				}
+			}
+		</div>
+	
 </body>
 </html>

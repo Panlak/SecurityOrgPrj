@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -11,21 +12,21 @@ namespace SecurityOrgPrj.Data.Models
 		public int SubscriptionId { get; set; }
 
 
-		[ForeignKey("Service")]
 		public  int ServiceId { get; set; }
-		[ForeignKey("ServiceSecurityOrganization")]
+		
 		public  int ServiceSecurityOrganizationId { get; set; }
 
 		public int CustomerId { get; set; }
 
 		public virtual Service Service { get; set; }
 
+		public virtual ICollection<Events> Events { get; set; }
 
 
 
-
-
+		[Required]
 		public string SubscriptionName { get; set; }
+		[Required]
 		public int Price { get; set; }
 		[DataType(DataType.Date)]
 		public DateTime StartSubscription { get; set; }
