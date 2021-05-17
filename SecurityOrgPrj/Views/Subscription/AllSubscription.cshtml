@@ -1,0 +1,48 @@
+﻿@using SecurityOrgPrj.Data.Models;
+@model List<Subscription>
+
+@{
+	Layout = "_Layout";
+}
+
+
+
+
+<table>
+	<caption>Subscription Table</caption>
+	<thead>
+		<tr>
+			<th scope="col">SubscriptionId</th>
+			<th scope="col">SubscriptionName</th>
+			<th scope="col">Price</th>
+			<th scope="col">ServiceId</th>
+			<th scope="col">ServiceSecurityOrganizationId</th>
+
+		</tr>
+	</thead>
+	<tbody>
+		@{
+			foreach (var item in Model)
+			{
+				<tr>
+					<th scope="row">@item.SubscriptionId</th>
+					<th scope="row">@item.SubscriptionName</th>
+					<td scope="row">@item.Price</td>
+					<td scope="row">@item.ServiceId</td>
+					<td scope="row">@item.ServiceSecurityOrganizationId</td>
+
+				</tr>
+
+
+			}
+
+
+		}
+		<div class="Information">
+
+			<a asp-controller="Subscription" asp-action="DeleteSubscription">Видалити з корзини</a>
+			<a href="/Home/Result">Add Subscription</a>
+		</div>
+</table>
+
+

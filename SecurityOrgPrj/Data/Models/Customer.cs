@@ -9,6 +9,8 @@ namespace SecurityOrgPrj.Data.Models
 		public string Custome_Surname { get; set; }
 		public string Phone { get; set; }
 		public string Email { get; set; }
+		public  int CityId { get; set; }
+
 
 		public virtual ICollection<Subscription> Subscription { get; set; }
 

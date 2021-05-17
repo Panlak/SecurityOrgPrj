@@ -8,7 +8,7 @@ namespace SecurityOrgPrj.Data.Models
 		public string NameOrganization { get; set; }
 		public string Email { get; set; }
 		public int CountEmployees { get; set; }
-
+		public int CityId { get; set; }
 		public virtual ICollection<Service> Service { get; set; }
 	}
 }

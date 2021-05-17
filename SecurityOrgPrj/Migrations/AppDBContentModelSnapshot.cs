@@ -47,7 +47,7 @@ namespace SecurityOrgPrj.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int?>("CityId")
+                    b.Property<int>("CityId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Custome_Surname")
@@ -231,7 +231,9 @@ namespace SecurityOrgPrj.Migrations
             modelBuilder.Entity("SecurityOrgPrj.Data.Models.Subscription", b =>
                 {
                     b.Property<int>("SubscriptionId")
-                        .HasColumnType("integer");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<int>("ServiceId")
                         .HasColumnType("integer");
@@ -242,7 +244,7 @@ namespace SecurityOrgPrj.Migrations
                     b.Property<int>("CustomerId")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("EndtSubscription")
+                    b.Property<DateTime>("EndSubscription")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<int>("Price")
@@ -253,7 +255,8 @@ namespace SecurityOrgPrj.Migrations
 
                     b.Property<string>("SubscriptionName")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
 
                     b.HasKey("SubscriptionId", "ServiceId", "ServiceSecurityOrganizationId", "CustomerId");
 
@@ -290,7 +293,9 @@ namespace SecurityOrgPrj.Migrations
                 {
                     b.HasOne("SecurityOrgPrj.Data.Models.City", null)
                         .WithMany("Customer")
-                        .HasForeignKey("CityId");
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("SecurityOrgPrj.Data.Models.DeparutureInfo", b =>

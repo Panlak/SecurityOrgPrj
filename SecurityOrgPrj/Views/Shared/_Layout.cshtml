@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>List</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width">
+
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="~/css/bootstrap.min.css" rel="stylesheet" />
+
+	<link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet" />
+
+
+
+	<link type="text/css" rel="stylesheet" href="~/css/StyleSheet.css" />
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="#">Navbar</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<a class="nav-link" href="/Subscription/AllSubscription">subscribers <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="/Subscribers/GetSubscribers">subscribers <span class="sr-only">(current)</span></a>
+				</li>
+</div>
+	</nav>
+	<div class="Content">
+		<div class="Main mt-5">
+
+			@RenderBody()
+		</div>
+
+	</div>
+	<footer class="bg-light text-center text-lg-start">
+		<!-- Copyright -->
+		<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+			© 2021 Copyright:
+			<a class="text-dark" href="https://mdbootstrap.com/">SecurityOrganization</a>
+		</div>
+		<!-- Copyright -->
+	</footer>
+
+
+</body>
+</html>

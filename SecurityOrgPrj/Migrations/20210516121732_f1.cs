@@ -51,7 +51,7 @@ namespace SecurityOrgPrj.Migrations
                     Custome_Surname = table.Column<string>(type: "text", nullable: true),
                     Phone = table.Column<string>(type: "text", nullable: true),
                     Email = table.Column<string>(type: "text", nullable: true),
-                    CityId = table.Column<int>(type: "integer", nullable: true)
+                    CityId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -61,7 +61,7 @@ namespace SecurityOrgPrj.Migrations
                         column: x => x.CityId,
                         principalTable: "City",
                         principalColumn: "CityId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -132,14 +132,15 @@ namespace SecurityOrgPrj.Migrations
                 name: "Subscription",
                 columns: table => new
                 {
-                    SubscriptionId = table.Column<int>(type: "integer", nullable: false),
+                    SubscriptionId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     ServiceId = table.Column<int>(type: "integer", nullable: false),
                     ServiceSecurityOrganizationId = table.Column<int>(type: "integer", nullable: false),
                     CustomerId = table.Column<int>(type: "integer", nullable: false),
-                    SubscriptionName = table.Column<string>(type: "text", nullable: false),
+                    SubscriptionName = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
                     Price = table.Column<int>(type: "integer", nullable: false),
                     StartSubscription = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    EndtSubscription = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
+                    EndSubscription = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
                 },
                 constraints: table =>
                 {

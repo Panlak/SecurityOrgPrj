@@ -1,24 +1,39 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SecurityOrgPrj.Data.Interfaces;
-using SecurityOrgPrj.Data.ViewModel;
+using SecurityOrgPrj.Data.Models;
 
+using System.Linq;
 namespace SecurityOrgPrj.Controllers
 {
 	public class HomeController : Controller
 	{
-		public readonly IAllView _IAllView;
-		public HomeController(IAllView IallView)
+		public IAllSubscriptions _IAllSubscriptions;
+		public Subscription _Subscription;
+
+		public HomeController(IAllSubscriptions IAllSubscriptions)
 		{
-			_IAllView = IallView;
+			_IAllSubscriptions = IAllSubscriptions;
 		}
 
-		public ViewResult Result(int id)
+
+		public IActionResult Result(Subscription Subscription)
 		{
-			var country = new IndexViewModel() { City = _IAllView.City, Countries = _IAllView.Countries };
-
-			return View(country);
 
 
+			if (ModelState.IsValid)
+			{
+				_IAllSubscriptions.CreateSubscription(Subscription);
+				return RedirectToAction("Complete");
+			}
+
+			return View(Subscription);
 		}
+
+		public IActionResult Complete()
+		{
+			ViewBag.Message = "Subscription Added";
+			return View();
+		}
+		
 	}
 }

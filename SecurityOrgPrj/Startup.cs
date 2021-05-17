@@ -31,7 +31,14 @@ namespace SecurityOrgPrj
 			services.AddDbContext<AppDBContent>(options => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
 			services.AddTransient<IAllCountries, CountryRep>();
 			services.AddTransient<IAllCity, CityRep>();
-			services.AddTransient<IAllView, IndexViewRepository>();
+			
+
+
+
+			services.AddTransient<IAllSubscriptions, SubscriptionRepository>();
+
+			services.AddTransient<ISubscribers, SubscribersRepository>();
+
 			services.AddControllersWithViews();
 			services.AddMvc();
 

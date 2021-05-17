@@ -1,39 +1,69 @@
-﻿@using  SecurityOrgPrj.Data.ViewModel
-@using 
-@model IndexViewModel
+﻿@using SecurityOrgPrj.Data.Models
+@model Subscription
 
-@{
-	Layout = null;
+@{ 
+	Layout = "_Layout";
 }
-<!DOCTYPE html>
-<html>
-<head>
-	<title>List</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width">
 
-	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-	<link href="~/css/bootstrap.min.css" rel="stylesheet" />
 
-	<link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet" />
 
-	<link href="~/css/StyleSheet.css" rel="stylesheet" />
-	@Styles.Render("~/css/StyleSheet.css")
-</head>
-<body>
+
+<div class="Success">
+	<a href="/Subscription/AllSubscription">Back to Table</a>
+</div>
+<div class="Main123">
+
+
 	
-		<div class="bg-success">
-			@{
-				foreach (var country in Model.Countries)
-				{
-					<h2>@country.CountryName</h2>
-				}
-				foreach (var item in Model.City)
-				{
-					<h2>@item.CityName</h2>
-				}
-			}
+	<form asp-action="Result" method="post">
+		<div class="form-group">
+			<label asp-for="SubscriptionName"></label>
+			<div class="col-md-12">
+				<input asp-for="SubscriptionName" class="form-control" />
+
+			</div>
 		</div>
-	
-</body>
-</html>
+
+		<div class="form-group">
+			<label asp-for="ServiceId"></label>
+			<div class="col-md-12">
+				<input asp-for="ServiceId" class="form-control" />
+				<span asp-validation-for="ServiceId" class="text-danger"></span>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label asp-for="ServiceSecurityOrganizationId"></label>
+			<div class="col-md-12">
+				<input asp-for="ServiceSecurityOrganizationId" class="form-control" />
+				<span asp-validation-for="ServiceSecurityOrganizationId" class="text-danger"></span>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label asp-for="CustomerId"></label>
+			<div class="col-md-12">
+				<input asp-for="CustomerId" class="form-control" />
+				<span asp-validation-for="CustomerId" class="text-danger"></span>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label asp-for="Price"></label>
+			<div class="col-md-12">
+				<input asp-for="Price" class="form-control" />
+				<span asp-validation-for="Price" class="text-danger"></span>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label asp-for="EndSubscription"></label>
+			<div class="col-md-12">
+				<input asp-for="EndSubscription" class="form-control" />
+				<span asp-validation-for="EndSubscription" class="text-danger"></span>
+			</div>
+		</div>
+
+		<input class="btn btn-success" type="submit" value="Add Subscription" />
+	</form>
+</div>
