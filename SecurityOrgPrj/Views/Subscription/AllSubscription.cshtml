@@ -5,44 +5,39 @@
 	Layout = "_Layout";
 }
 
-
-
-
-<table>
-	<caption>Subscription Table</caption>
+<div class="Information">
+	<a href="/Home/Result">Добавити Підписку</a>
+</div>
+<table class="resp-tab">
 	<thead>
 		<tr>
-			<th scope="col">SubscriptionId</th>
-			<th scope="col">SubscriptionName</th>
-			<th scope="col">Price</th>
-			<th scope="col">ServiceId</th>
-			<th scope="col">ServiceSecurityOrganizationId</th>
-
+			<th>Id Підписка</th>
+			<th>Імя Підписки</th>
+			<th>Ціна</th>
+			<th>Id замовника</th>
+			<th>Id охоронна організація</th>
+			<th>Редагувати</th>
+			<th>Видалити</th>
 		</tr>
 	</thead>
-	<tbody>
-		@{
-			foreach (var item in Model)
-			{
+	@{ foreach (var item in Model)
+		{
+			<tbody>
 				<tr>
-					<th scope="row">@item.SubscriptionId</th>
-					<th scope="row">@item.SubscriptionName</th>
-					<td scope="row">@item.Price</td>
-					<td scope="row">@item.ServiceId</td>
-					<td scope="row">@item.ServiceSecurityOrganizationId</td>
 
+					<td>@item.SubscriptionId</td>
+					<td>@item.SubscriptionName</td>
+					<td>@item.Price</td>
+					<td>@item.CustomerId</td>
+					<td>@item.ServiceSecurityOrganizationId</td>
+					<td><a asp-controller="Subscription" asp-action="EditSub" asp-route-Id="@item.SubscriptionId">Редагувати</a></td>
+					<td><a asp-controller="Subscription" asp-action="DeleteSubscription" asp-route-Id="@item.SubscriptionId">Видалити</a></td>
 				</tr>
 
-
-			}
-
+			</tbody>
 
 		}
-		<div class="Information">
-
-			<a asp-controller="Subscription" asp-action="DeleteSubscription">Видалити з корзини</a>
-			<a href="/Home/Result">Add Subscription</a>
-		</div>
+	}
 </table>
 
 

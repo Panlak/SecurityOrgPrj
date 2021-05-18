@@ -158,7 +158,7 @@ namespace SecurityOrgPrj.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int?>("CityId")
+                    b.Property<int>("CityId")
                         .HasColumnType("integer");
 
                     b.Property<int>("CountEmployees")
@@ -330,7 +330,9 @@ namespace SecurityOrgPrj.Migrations
                 {
                     b.HasOne("SecurityOrgPrj.Data.Models.City", null)
                         .WithMany("SecurityOrganizationId")
-                        .HasForeignKey("CityId");
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("SecurityOrgPrj.Data.Models.Service", b =>

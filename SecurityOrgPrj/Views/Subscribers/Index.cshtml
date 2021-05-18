@@ -1,0 +1,51 @@
+﻿@using SecurityOrgPrj.Data.ViewModels
+@model IEnumerable<Subscribers>
+
+@{
+	Layout = "_Layout";
+}
+
+
+
+
+	<div class="Success">
+		<a href="/Subscription/AllSubscription">Back to Table</a>
+	</div>
+	<div class="FormCountry">
+
+			@using (Html.BeginForm())
+			{
+			<p>
+				Ведіть Місто @Html.TextBox("SearchString") 
+				<input type="submit" value="Пошук" class="Sumbit" />
+			</p>
+		}	
+		</div>
+	
+		<table class="resp-tab">
+			<thead>
+				<tr>
+					<th>Імя Підписки</th>
+					<th>Імя Сервіса</th>
+					<th>Пошта Замовника</th>
+					<th>Імя Замовника</th>
+					<th>Місто Замовника</th>
+				</tr>
+			</thead>
+			@{ foreach (var item in Model)
+				{
+					<tbody>
+						<tr>
+
+							<td>@item.Subscription.SubscriptionName</td>
+							<td>@item.Service.Name</td>
+							<td>@item.Customer.Email</td>
+							<td>@item.Customer.Customer_Name</td>
+							<td>@item.City.CityName</td>
+						</tr>
+
+					</tbody>
+
+				}
+			}
+		</table>

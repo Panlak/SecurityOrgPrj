@@ -10,7 +10,7 @@ using SecurityOrgPrj;
 namespace SecurityOrgPrj.Migrations
 {
     [DbContext(typeof(AppDBContent))]
-    [Migration("20210516121732_f1")]
+    [Migration("20210517150522_f1")]
     partial class f1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -160,7 +160,7 @@ namespace SecurityOrgPrj.Migrations
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<int?>("CityId")
+                    b.Property<int>("CityId")
                         .HasColumnType("integer");
 
                     b.Property<int>("CountEmployees")
@@ -332,7 +332,9 @@ namespace SecurityOrgPrj.Migrations
                 {
                     b.HasOne("SecurityOrgPrj.Data.Models.City", null)
                         .WithMany("SecurityOrganizationId")
-                        .HasForeignKey("CityId");
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("SecurityOrgPrj.Data.Models.Service", b =>

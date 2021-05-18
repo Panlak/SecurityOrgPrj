@@ -1,0 +1,34 @@
+﻿@using SecurityOrgPrj.Data.Models
+@model IEnumerable<Events>
+
+@{
+	Layout = "_Layout";
+}
+
+<table class="resp-tab">
+	<thead>
+		<tr>
+			<th>Id Події</th>
+			<th>Тип Події</th>
+			<th>Нотатки</th>
+			<th>Приорітет</th>
+			<th>Id Замовника</th>
+		</tr>
+	</thead>
+	@{ foreach (var item in Model)
+		{
+			<tbody>
+				<tr>
+
+					<td>@item.EventsId</td>
+					<td>@item.Event_Type</td>
+					<td>@item.Notes</td>
+					<td>@item.Priority</td>
+					<td>@item.SubscriptionCustomerId</td>
+				</tr>
+
+			</tbody>
+
+		}
+	}
+</table>

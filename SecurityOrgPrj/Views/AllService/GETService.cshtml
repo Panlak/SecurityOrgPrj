@@ -1,0 +1,36 @@
+﻿@using SecurityOrgPrj.Data.Models
+@model IEnumerable<Service>
+
+@{
+	Layout = "_Layout";
+}
+
+<div class="Success">
+	<a href="/Subscription/AllSubscription">Back to Table</a>
+</div>
+<table class="resp-tab">
+<thead>
+	<tr>
+		<th>Id Сервіс</th>
+		<th>Імя</th>
+		<th>Ціна</th>
+		<th>Id Охоронної організації</th>
+		<th>Описання</th>
+	</tr>
+</thead>
+@{ foreach (var item in Model)
+	{
+		<tbody>
+			<tr>
+
+				<td>@item.ServiceId</td>
+				<td>@item.Name</td>
+				<td>@item.Price</td>
+				<td>@item.SecurityOrganizationId</td>
+				<td>@item.Description</td>
+			</tr>
+
+		</tbody>
+	}
+}
+</table>

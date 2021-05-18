@@ -73,7 +73,7 @@ namespace SecurityOrgPrj.Migrations
                     NameOrganization = table.Column<string>(type: "text", nullable: true),
                     Email = table.Column<string>(type: "text", nullable: true),
                     CountEmployees = table.Column<int>(type: "integer", nullable: false),
-                    CityId = table.Column<int>(type: "integer", nullable: true)
+                    CityId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -83,7 +83,7 @@ namespace SecurityOrgPrj.Migrations
                         column: x => x.CityId,
                         principalTable: "City",
                         principalColumn: "CityId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(

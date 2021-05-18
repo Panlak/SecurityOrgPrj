@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using SecurityOrgPrj.Data.Interfaces;
 using SecurityOrgPrj.Data.Models;
 using SecurityOrgPrj.Data.ViewModels;
@@ -18,7 +19,7 @@ namespace SecurityOrgPrj.Controllers
 			_ISubscribers = ISubscribers;
 		}
 
-		public ViewResult GetSubscribers()
+		public IEnumerable<Subscribers> GetTable()
 		{
 			List<Customer> customer = _ISubscribers.Customer;
 			List<Subscription> subscription = _ISubscribers.Subscription;
@@ -27,23 +28,17 @@ namespace SecurityOrgPrj.Controllers
 			List<SecurityOrganization> securityorganization = _ISubscribers.SecurityOrganization;
 
 
-
-
-
-
 			var multiple = from SECORG in securityorganization
 
-						   join SERVICE in service on SECORG.SecurityOrganizationId equals SERVICE.SecurityOrganizationId 
+						   join SERVICE in service on SECORG.SecurityOrganizationId equals SERVICE.SecurityOrganizationId
 
-					
+						   from  CITY in city 
 
-						   join CITY in city on SECORG.CityId equals CITY.CityId
+						   join CUSTOMER in customer on CITY.CityId equals CUSTOMER.CityId
 
-						   join CUSTOMER in customer on CITY.CityId equals CUSTOMER.CityId 
+						   join SUBSCRIP in subscription on new { SERVICE.ServiceId, p2 = (int?)SERVICE.SecurityOrganizationId, CUSTOMER.CustomerId }
 
-						   join SUBSCRIP in subscription on new {SERVICE.ServiceId, p2 = (int?)SERVICE.SecurityOrganizationId, CUSTOMER.CustomerId }
-
-						   equals new {SUBSCRIP.ServiceId, p2 = (int?)SUBSCRIP.ServiceSecurityOrganizationId, SUBSCRIP.CustomerId }			  
+						   equals new { SUBSCRIP.ServiceId, p2 = (int?)SUBSCRIP.ServiceSecurityOrganizationId, SUBSCRIP.CustomerId }
 
 						   into details
 
@@ -55,23 +50,30 @@ namespace SecurityOrgPrj.Controllers
 							   Customer = CUSTOMER,
 							   City = CITY,
 							   SecurityOrganization = SECORG
-							   
+
 						   };
-
-
-
-
-
-
-
-
-
-
-
-
-			return View();
+			return (multiple);
 		}
 
+		public ViewResult GetSubscribers()
+		{
+			return View(GetTable());
+		}
 
+		public ActionResult Index(string searchString)
+		{
+			List<Subscribers> Subscribers = GetTable().ToList();
+
+			var movies = from SUB in Subscribers select SUB;
+
+			if (!String.IsNullOrEmpty(searchString))
+			{
+				movies = movies.Where(s => s.City.CityName.Contains(searchString));
+			}
+
+			return View(movies);
+		}
+		
+		
 	}
 }

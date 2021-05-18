@@ -31,9 +31,21 @@ namespace SecurityOrgPrj.Data.repository
 			appDbContent.SaveChanges();
 		}
 
-		public void RemoveSubscription()
+		public void EditSubscription(Subscription subscription)
 		{
-			appDbContent.Subscription.Remove(appDbContent.Subscription.OrderBy(x=>x.SubscriptionId).Last());
+			RemoveSubscription(subscription);	
+			appDbContent.Subscription.Add(subscription);	
+			appDbContent.SaveChanges();
+
+			
+		}
+
+		public void RemoveSubscription(Subscription Subscription)
+		{
+			var item = appDbContent.Subscription.Where(x => x.SubscriptionId == Subscription.SubscriptionId).FirstOrDefault();
+
+			appDbContent.Subscription.Remove(item);
+
 			appDbContent.SaveChanges();
 		}
 		

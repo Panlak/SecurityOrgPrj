@@ -10,6 +10,7 @@ namespace SecurityOrgPrj.Data.Interfaces
 	{
 		void CreateSubscription(Subscription Subscription);
 		public List<Subscription> Subscriptions { get; }
-		void RemoveSubscription();
+		void RemoveSubscription(Subscription Subscription);
+		void EditSubscription(Subscription Subscription);
 	}
 }
