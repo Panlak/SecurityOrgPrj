@@ -17,6 +17,13 @@
 	
 	<form asp-action="Result" method="post">
 		<div class="form-group">
+			<label asp-for="SubscriptionId"></label>
+			<div class="col-md-12">
+				<input asp-for="SubscriptionId" class="form-control" />
+
+			</div>
+		</div>
+		<div class="form-group">
 			<label asp-for="SubscriptionName"></label>
 			<div class="col-md-12">
 				<input asp-for="SubscriptionName" class="form-control" />

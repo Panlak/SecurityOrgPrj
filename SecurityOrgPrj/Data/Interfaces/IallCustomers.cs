@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace SecurityOrgPrj.Data.Interfaces
 {
-	public interface IALlService
+	public interface IallCustomers
 	{
-		public IEnumerable<Service> Service { get; }
-		void Remove(Service Service);
-		void Edit(Service Service);
+		public IEnumerable<Customer> Customer { get; }
 	}
 }

@@ -26,30 +26,19 @@ namespace SecurityOrgPrj.Controllers
 			return View(_IAllSubscriptions.Subscriptions);
 		}
 
-		public RedirectToActionResult DeleteSubscription(int id )
+		public async Task<IActionResult> RemoveSub(int id)
 		{
-			var item = _IAllSubscriptions.Subscriptions.FirstOrDefault(i => i.SubscriptionId == id);
-			_IAllSubscriptions.RemoveSubscription(item);
-			return RedirectToAction("AllSubscription");
-		}
 
-
-
-		
-		public IActionResult EditSub(int id,Subscription Subscription)
-		{
-			var item = _IAllSubscriptions.Subscriptions.FirstOrDefault(x=>x.SubscriptionId == id);
-			Subscription.SubscriptionId = id;
-			if (ModelState.IsValid)
+			if (id != null)
 			{
-				_IAllSubscriptions.EditSubscription(Subscription);
-				return RedirectToAction("AllSubscription");
+				var sub = _IAllSubscriptions.Subscriptions.FirstOrDefault(x => x.SubscriptionId == id);
+					_IAllSubscriptions.Remove(sub);
+					return RedirectToAction("AllSubscription");
+				
 			}
+			return NotFound();
 
-			return View(item);
 		}
-
-
 	}
 }
 

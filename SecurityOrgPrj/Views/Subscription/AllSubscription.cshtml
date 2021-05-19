@@ -14,25 +14,29 @@
 			<th>Id Підписка</th>
 			<th>Імя Підписки</th>
 			<th>Ціна</th>
+			<th>Id Cервіса</th>
 			<th>Id замовника</th>
 			<th>Id охоронна організація</th>
-			<th>Редагувати</th>
+			<th>Початок підписки</th>
+			<th>Кінець підписки</th>
 			<th>Видалити</th>
 		</tr>
 	</thead>
 	@{ foreach (var item in Model)
 		{
 			<tbody>
-				<tr>
+					<tr>
 
-					<td>@item.SubscriptionId</td>
-					<td>@item.SubscriptionName</td>
-					<td>@item.Price</td>
-					<td>@item.CustomerId</td>
-					<td>@item.ServiceSecurityOrganizationId</td>
-					<td><a asp-controller="Subscription" asp-action="EditSub" asp-route-Id="@item.SubscriptionId">Редагувати</a></td>
-					<td><a asp-controller="Subscription" asp-action="DeleteSubscription" asp-route-Id="@item.SubscriptionId">Видалити</a></td>
-				</tr>
+						<td>@item.SubscriptionId</td>
+						<td>@item.SubscriptionName</td>
+						<td>@item.Price</td>
+						<td>@item.ServiceId</td>
+						<td>@item.CustomerId</td>
+						<td>@item.ServiceSecurityOrganizationId</td>
+						<td>@item.StartSubscription</td>
+						<td>@item.EndSubscription</td>
+						<td><a asp-controller="Subscription" asp-action="RemoveSub" asp-route-Id="@item.SubscriptionId">Видалити</a></td>
+					</tr>
 
 			</tbody>
 

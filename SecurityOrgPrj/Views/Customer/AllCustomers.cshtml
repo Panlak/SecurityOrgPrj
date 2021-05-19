@@ -1,0 +1,39 @@
+﻿
+@using SecurityOrgPrj.Data.Models;
+@model IEnumerable<Customer>
+
+@{
+	Layout = "_Layout";
+}
+
+<div class="Success">
+	<a href="/Subscription/AllSubscription">Back to Table</a>
+</div>
+<table class="resp-tab">
+	<thead>
+		<tr>
+			<th>Id Замовник</th>
+			<th>Імя</th>
+			<th>Прізвище</th>
+			<th>Пошта електронна</th>
+			<th>Телефон</th>
+		</tr>
+	</thead>
+	@{ foreach (var item in Model)
+		{
+			<tbody>
+				<tr>
+
+					<td>@item.CustomerId</td>
+					<td>@item.Customer_Name</td>
+					<td>@item.Custome_Surname</td>
+					<td>@item.Email</td>
+					<td>@item.Phone</td>
+				</tr>
+
+			</tbody>
+
+		}
+	}
+</table>
+

@@ -9,8 +9,7 @@ namespace SecurityOrgPrj.Data.Interfaces
 	public interface IAllSubscriptions
 	{
 		void CreateSubscription(Subscription Subscription);
+		void Remove(Subscription Subscription);
 		public List<Subscription> Subscriptions { get; }
-		void RemoveSubscription(Subscription Subscription);
-		void EditSubscription(Subscription Subscription);
 	}
 }

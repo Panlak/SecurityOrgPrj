@@ -1,0 +1,57 @@
+﻿@using SecurityOrgPrj.Data.Models
+@model Service
+
+@{
+	Layout = "_Layout";
+}
+
+
+
+
+<div class="Success">
+	<a href="/AllService/GETService">Back to Table</a>
+</div>
+<div class="Main123">
+
+	<form asp-action="EditService" method="post">
+		<div class="form-group">
+			<label>Id Сервіс</label>
+			<div class="col-md-12">
+				<input asp-for="ServiceId" class="form-control" />
+
+			</div>
+		</div>
+		<div class="form-group">
+			<label>Імя</label>
+			<div class="col-md-12">
+				<input asp-for="Name" class="form-control" />
+
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label>Ціна</label>
+			<div class="col-md-12">
+				<input asp-for="Price" class="form-control" />
+				<span asp-validation-for="Price" class="text-danger"></span>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label >Описання</label>
+			<div class="col-md-12">
+				<input asp-for="Description" class="form-control" />
+				<span asp-validation-for="Description" class="text-danger"></span>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label >Id Охорона Організація</label>
+			<div class="col-md-12">
+				<input asp-for="SecurityOrganizationId" class="form-control" />
+				<span asp-validation-for="SecurityOrganizationId" class="text-danger"></span>
+			</div>
+		</div>
+		<input class="btn btn-success" type="submit" value="Edit" />
+	</form>
+</div>

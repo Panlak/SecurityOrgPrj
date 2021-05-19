@@ -10,8 +10,8 @@ namespace SecurityOrgPrj.Data.Models
 	[Table("Subscription")]
 	public partial class Subscription
 	{
-		[BindNever]
-		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+
+		[Display(Name = "Subscription Id")]
 		public int SubscriptionId { get; set; }
 
 		[Display(Name = "Service Id")]

@@ -41,7 +41,7 @@ namespace SecurityOrgPrj
 
 			
 			services.AddTransient<IALlService, ServiceRepository>();
-
+			services.AddTransient<IallCustomers, CustomerRepository>();
 			services.AddTransient<IallEvents, EventsRepository>();
 
 			services.AddControllersWithViews();

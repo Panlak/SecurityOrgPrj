@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using SecurityOrgPrj.Data.Interfaces;
 using SecurityOrgPrj.Data.Models;
 using System;
@@ -25,29 +26,15 @@ namespace SecurityOrgPrj.Data.repository
 		{
 			Subscription.StartSubscription = DateTime.Now;
 			
-
 			appDbContent.Subscription.Add(Subscription);
 
 			appDbContent.SaveChanges();
 		}
 
-		public void EditSubscription(Subscription subscription)
+		public void Remove(Subscription Subscription)
 		{
-			RemoveSubscription(subscription);	
-			appDbContent.Subscription.Add(subscription);	
-			appDbContent.SaveChanges();
-
-			
-		}
-
-		public void RemoveSubscription(Subscription Subscription)
-		{
-			var item = appDbContent.Subscription.Where(x => x.SubscriptionId == Subscription.SubscriptionId).FirstOrDefault();
-
-			appDbContent.Subscription.Remove(item);
-
+			appDbContent.Subscription.Remove(Subscription);
 			appDbContent.SaveChanges();
 		}
-		
 	}
 }

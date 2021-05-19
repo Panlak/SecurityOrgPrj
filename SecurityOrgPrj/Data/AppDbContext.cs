@@ -31,6 +31,8 @@ namespace SecurityOrgPrj
 			builder.Entity<Service>().HasIndex(c => c.ServiceId).IsUnique();     //Unique
 
 			///////////////////////////////////////////////////////////////////////////////
+		
+			builder.Entity<Subscription>().HasIndex(c => c.SubscriptionId).IsUnique();
 			builder.Entity<Subscription>().HasOne(x => x.Service)
 			.WithMany(x => x.Subscription)
 			.HasForeignKey(x => new 

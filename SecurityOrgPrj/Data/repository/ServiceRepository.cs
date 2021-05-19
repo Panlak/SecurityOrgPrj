@@ -17,5 +17,23 @@ namespace SecurityOrgPrj.Data.repository
 		}
 
 		public IEnumerable<Service> Service => _AppDBContent.Service;
+
+		public void Remove(Service Service)
+		{
+			var item = _AppDBContent.Service.Where(x => x.ServiceId == Service.ServiceId).FirstOrDefault();
+
+			_AppDBContent.Service.Remove(item);
+
+			_AppDBContent.SaveChanges();
+		}
+
+		public async void Edit(Service Service)
+		{
+			_AppDBContent.Service.Update(Service);
+			_AppDBContent.SaveChanges();
+		}
+
+		
+
 	}
 }

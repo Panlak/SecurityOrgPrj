@@ -8,29 +8,44 @@
 <div class="Success">
 	<a href="/Subscription/AllSubscription">Back to Table</a>
 </div>
-<table class="resp-tab">
-<thead>
-	<tr>
-		<th>Id Сервіс</th>
-		<th>Імя</th>
-		<th>Ціна</th>
-		<th>Id Охоронної організації</th>
-		<th>Описання</th>
-	</tr>
-</thead>
-@{ foreach (var item in Model)
+
+<div class="FormCountry">
+
+	@using (Html.BeginForm())
 	{
-		<tbody>
-			<tr>
-
-				<td>@item.ServiceId</td>
-				<td>@item.Name</td>
-				<td>@item.Price</td>
-				<td>@item.SecurityOrganizationId</td>
-				<td>@item.Description</td>
-			</tr>
-
-		</tbody>
+		<p>
+			Ціна від: @Html.TextBox("SearchString")
+			<input type="submit" value="Пошук" class="Sumbit" />
+		</p>
 	}
-}
+</div>
+<table class="resp-tab">
+	<thead>
+		<tr>
+			<th>Id Сервіс</th>
+			<th>Імя</th>
+			<th>Ціна</th>
+			<th>Id Охоронної організації</th>
+			<th>Описання</th>
+			<th>Редагувати</th>
+			<th>Видалити</th>
+		</tr>
+	</thead>
+	@{ foreach (var item in Model)
+		{
+			<tbody>
+				<tr>
+
+					<td>@item.ServiceId</td>
+					<td>@item.Name</td>
+					<td>@item.Price</td>
+					<td>@item.SecurityOrganizationId</td>
+					<td>@item.Description</td>
+					<td><a asp-controller="AllService" asp-action="EditService" asp-route-Id="@item.ServiceId">Редагувати</a></td>
+					<td><a asp-controller="AllService" asp-action="RemoveService" asp-route-Id="@item.ServiceId">Видалити</a></td>
+				</tr>
+
+			</tbody>
+		}
+	}
 </table>
