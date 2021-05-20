@@ -1,0 +1,41 @@
+﻿@using SecurityOrgPrj.Data.ViewModels
+@model IEnumerable<IGrouping<int, Subscribers>>
+
+@{
+	Layout = "_Layout";
+}
+
+
+<table class="resp-tab">
+	<thead>
+		<tr>
+			<th>Імя</th>
+			<th>Прізвище</th>
+			<th>Пошта</th>
+			<th>Телефон</th>
+			<th>Кількість куплених підписок</th>
+			
+		</tr>
+	</thead>
+	@{ foreach (var item in Model)
+		{
+			<tbody>
+					<tr>
+
+						<td>@item.FirstOrDefault(x => x.Customer.CustomerId == item.Key).Customer.Customer_Name</td>
+						<td>@item.FirstOrDefault(x => x.Customer.CustomerId == item.Key).Customer.Custome_Surname</td>
+						<td>@item.FirstOrDefault(x => x.Customer.CustomerId == item.Key).Customer.Email</td>
+						<td>@item.FirstOrDefault(x => x.Customer.CustomerId == item.Key).Customer.Phone</td>
+						<td>@item.Count(x => x.Customer.CustomerId == item.Key)</td>
+		
+					</tr>
+
+			</tbody>
+		}
+	}
+</table>
+
+
+
+
+

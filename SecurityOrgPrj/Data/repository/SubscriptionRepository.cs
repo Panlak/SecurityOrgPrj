@@ -24,10 +24,10 @@ namespace SecurityOrgPrj.Data.repository
 
 		public void CreateSubscription(Subscription Subscription)
 		{
-			Subscription.StartSubscription = DateTime.Now;
-			
-			appDbContent.Subscription.Add(Subscription);
+			Subscription.StartSubscription = DateTime.Now.AddHours(DateTime.Now.Hour).AddMinutes(DateTime.Now.Minute).AddSeconds(DateTime.Now.Second);
 
+			appDbContent.Subscription.Add(Subscription);
+			
 			appDbContent.SaveChanges();
 		}
 

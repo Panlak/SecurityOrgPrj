@@ -74,6 +74,12 @@ namespace SecurityOrgPrj.Controllers
 			return View(movies);
 		}
 		
-		
+		public ActionResult CountSubscrib()
+		{
+			var table = GetTable().GroupBy(x => x.Customer.CustomerId);
+
+			
+			return View(table);
+		}
 	}
 }

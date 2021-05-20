@@ -11,5 +11,6 @@ namespace SecurityOrgPrj.Data.Interfaces
 		public IEnumerable<Service> Service { get; }
 		void Remove(Service Service);
 		void Edit(Service Service);
+		void CreateService(Service Service);
 	}
 }

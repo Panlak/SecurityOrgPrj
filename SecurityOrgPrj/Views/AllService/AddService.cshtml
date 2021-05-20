@@ -1,4 +1,4 @@
-﻿@using SecurityOrgPrj.Data.Models
+﻿@using SecurityOrgPrj.Data.Models;
 @model Service
 
 @{
@@ -6,14 +6,9 @@
 }
 
 
-
-
-<div class="Success">
-	<a href="/AllService/GETService">Back to Table</a>
-</div>
 <div class="Main123">
 
-	<form asp-action="EditService" method="post">
+	<form asp-action="AddService" method="post">
 		<div class="form-group">
 			<label>Id Сервіс</label>
 			<div class="col-md-12">
@@ -38,7 +33,7 @@
 		</div>
 
 		<div class="form-group">
-			<label >Описання</label>
+			<label>Описання</label>
 			<div class="col-md-12">
 				<input asp-for="Description" class="form-control" />
 				<span asp-validation-for="Description" class="text-danger"></span>
@@ -46,12 +41,14 @@
 		</div>
 
 		<div class="form-group">
-			<label >Id Охорона Організація</label>
+			<label>Id Охорона Організація</label>
 			<div class="col-md-12">
-				<input asp-for="SecurityOrganizationId" class="form-control" readonly="readonly" value="1" />
+				<input asp-for="SecurityOrganizationId" class="form-control" readonly="readonly" value="1"/>
 				<span asp-validation-for="SecurityOrganizationId" class="text-danger"></span>
 			</div>
 		</div>
 		<input class="btn btn-success" type="submit" value="Edit" />
 	</form>
 </div>
+
+

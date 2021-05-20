@@ -33,7 +33,10 @@ namespace SecurityOrgPrj.Data.repository
 			_AppDBContent.SaveChanges();
 		}
 
-		
-
+		public void CreateService(Service Service)
+		{
+			_AppDBContent.Service.Add(Service);
+			_AppDBContent.SaveChanges();
+		}
 	}
 }

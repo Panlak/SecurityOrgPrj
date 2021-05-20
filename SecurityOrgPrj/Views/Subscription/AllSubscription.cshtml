@@ -16,7 +16,7 @@
 			<th>Ціна</th>
 			<th>Id Cервіса</th>
 			<th>Id замовника</th>
-			<th>Id охоронна організація</th>
+		
 			<th>Початок підписки</th>
 			<th>Кінець підписки</th>
 			<th>Видалити</th>
@@ -32,7 +32,7 @@
 						<td>@item.Price</td>
 						<td>@item.ServiceId</td>
 						<td>@item.CustomerId</td>
-						<td>@item.ServiceSecurityOrganizationId</td>
+					
 						<td>@item.StartSubscription</td>
 						<td>@item.EndSubscription</td>
 						<td><a asp-controller="Subscription" asp-action="RemoveSub" asp-route-Id="@item.SubscriptionId">Видалити</a></td>

@@ -18,13 +18,27 @@
 .Content {
 	min-height: calc(100vh - 80px);
 }
+.CountSub a {
+	text-decoration: none;
+}
+.CountSub {
+	background-color:azure;
+	padding: 5px;
+	position: absolute;
+	right: 30%;
+	padding-left: 10px;
+	padding-bottom:5px;
+	top: 100px;
+	width: auto;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	border-radius: 2px;
+	color: black;
+}
 
-
-.Sumbit{
-	background-color:aliceblue;
-	padding:5px;
-	border-radius:5px;
-	
+.Sumbit {
+	background-color: aliceblue;
+	padding: 5px;
+	border-radius: 5px;
 }
 
 .FormCountry {

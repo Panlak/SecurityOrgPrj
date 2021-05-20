@@ -22,6 +22,20 @@ namespace SecurityOrgPrj.Controllers
 			return View(_IALlService.Service);
 		}
 
+		public IActionResult AddService(Service service)
+		{
+
+
+			if (service.ServiceId != 0 & !_IALlService.Service.Any(x=> x.ServiceId == service.ServiceId))
+			{
+				
+				_IALlService.CreateService(service);
+				return RedirectToAction("GETService");
+				
+			}
+			return View(service);
+		}
+
 		public async Task<IActionResult> RemoveService(int id)
 		{
 			if (id != null)
